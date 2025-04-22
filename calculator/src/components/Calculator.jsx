@@ -34,18 +34,38 @@ const Calculator = () => {
 
     let calculationResult;
 
-    if (operation === "add") {
-      calculationResult = firstNum + secondNum;
-    } else if (operation === "subtract") {
-      calculationResult = firstNum - secondNum;
-    } else if (operation === "multiply") {
-      calculationResult = firstNum * secondNum;
-    } else if (operation === "divide") {
-      if (secondNum === 0) {
-        setError("Cannot divide by zero");
-        return;
-      }
-      calculationResult = firstNum / secondNum;
+    // if (operation === "add") {
+    //   calculationResult = firstNum + secondNum;
+    // } else if (operation === "subtract") {
+    //   calculationResult = firstNum - secondNum;
+    // } else if (operation === "multiply") {
+    //   calculationResult = firstNum * secondNum;
+    // } else if (operation === "divide") {
+    //   if (secondNum === 0) {
+    //     setError("Cannot divide by zero");
+    //     return;
+    //   }
+    //   calculationResult = firstNum / secondNum;
+    // }
+    //Optimisation
+
+    switch (operation) {
+      case "add":
+        calculationResult = firstNum + secondNum;
+        break;
+      case "subtract":
+        calculationResult = firstNum - secondNum;
+        break;
+      case "multiply":
+        calculationResult = firstNum * secondNum;
+        break;
+      case "divide":
+        if (secondNum === 0) {
+          setError("Cannot divide by zero");
+          return;
+        }
+        calculationResult = firstNum / secondNum;
+        break;
     }
 
     setResult(Math.round(calculationResult * 100) / 100);
@@ -70,7 +90,7 @@ const Calculator = () => {
             id="num1"
             value={num1}
             onChange={(e) => setNum1(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 "
             placeholder="Enter first number"
           />
         </div>
